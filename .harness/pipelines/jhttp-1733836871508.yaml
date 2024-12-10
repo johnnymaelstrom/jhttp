@@ -1,6 +1,6 @@
 pipeline:
   identifier: Build_johnnymaelstrom_jhttp_1733836882142
-  name: Build jhttp
+  name: New Build for jhttp
   orgIdentifier: default
   projectIdentifier: default_project
   properties:
@@ -44,3 +44,4 @@ pipeline:
             spec: {}
             type: Docker
         type: CI
+  tags: {}
