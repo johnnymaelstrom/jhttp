@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_johnnymaelstrom_jhttp_1733831504304-pr-trigger-input-set
+  identifier: Build_johnnymaelstrom_jhttp_1733831504304prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_johnnymaelstrom_jhttp_1733831504304
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
