@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_johnnymaelstrom_jhttp_1733836882142-push-trigger-input-set
+  identifier: Build_johnnymaelstrom_jhttp_1733836882142pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_johnnymaelstrom_jhttp_1733836882142
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
