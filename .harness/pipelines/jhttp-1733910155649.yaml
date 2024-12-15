@@ -1,6 +1,6 @@
 pipeline:
   identifier: Build_johnnymaelstrom_jhttp_1733910158107
-  name: Build jhttp
+  name: CI - Build jhttp
   orgIdentifier: default
   projectIdentifier: default_project
   properties:
@@ -35,3 +35,4 @@ pipeline:
             spec: {}
             type: Cloud
         type: CI
+  tags: {}
