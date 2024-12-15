@@ -8,7 +8,7 @@ pipeline:
     ci:
       codebase:
         connectorRef: account.Github_OAuth_1733831441109
-        repoName: https://github.com/johnnymaelstrom/jhttp
+        repoName: johnnymaelstrom/jhttp
         build: <+input>
   stages:
     - stage:
