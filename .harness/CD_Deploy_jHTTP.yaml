@@ -1,0 +1,60 @@
+pipeline:
+  name: CD - Deploy jHTTP
+  identifier: CD_Deploy_jHTTP
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: jHTTP_Service
+          environment:
+            environmentRef: harnessdevenv
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: harnessk8sinfra
+          execution:
+            steps:
+              - step:
+                  name: TEMPLATE Canary Deploy
+                  identifier: TEMPLATE_Canary_Deploy
+                  template:
+                    templateRef: org.Canary_Deployment_Template
+                    versionLabel: Initial_Version
+              - stepGroup:
+                  name: Primary Deployment
+                  identifier: primaryDeployment
+                  steps:
+                    - step:
+                        name: Rolling Deployment
+                        identifier: rollingDeployment
+                        type: K8sRollingDeploy
+                        timeout: 10m
+                        spec:
+                          skipDryRun: false
+            rollbackSteps:
+              - step:
+                  name: Canary Delete
+                  identifier: rollbackCanaryDelete
+                  type: K8sCanaryDelete
+                  timeout: 10m
+                  spec: {}
+              - step:
+                  name: Rolling Rollback
+                  identifier: rollingRollback
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec: {}
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
